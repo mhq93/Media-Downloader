@@ -12,7 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mhq.nagwa.ui.MediaItem
 import com.mhq.nagwa.ui.theme.NagwaTheme
+import kotlinx.serialization.json.Json
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,8 @@ class MainActivity : ComponentActivity() {
                 .bufferedReader()
                 .use { it.readText() }
 
-        Log.d("jsonResponse", jsonResponse)
+        val mediaItems = Json.decodeFromString<List<MediaItem>>(jsonResponse)
+        Log.d("Nagwa", mediaItems.first().toString())
 
         enableEdgeToEdge()
         setContent {

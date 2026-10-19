@@ -1,8 +1,16 @@
 package com.mhq.nagwa.ui
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class MediaItem (
-    val id: Int,
-    val type: String,
-    val url: String,
-    val name: String
+    @SerialName("id")
+    val mediaItemId: Int,
+    @SerialName("type")
+    val mediaItemType: String,
+    @SerialName("url")
+    val mediaItemUrl: String,
+    @SerialName("name")
+    val mediaItemName: String
 )
