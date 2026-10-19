@@ -16,12 +16,19 @@ import com.mhq.nagwa.ui.theme.NagwaTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val jsonResponse =
+            applicationContext
+                .assets.open("getListOfFilesResponse.json")
+                .bufferedReader()
+                .use { it.readText() }
+
         enableEdgeToEdge()
         setContent {
             NagwaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = jsonResponse,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
