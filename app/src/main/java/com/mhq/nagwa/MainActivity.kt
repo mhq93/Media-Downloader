@@ -1,6 +1,7 @@
 package com.mhq.nagwa
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +23,8 @@ class MainActivity : ComponentActivity() {
                 .assets.open("getListOfFilesResponse.json")
                 .bufferedReader()
                 .use { it.readText() }
+
+        Log.d("jsonResponse", jsonResponse)
 
         enableEdgeToEdge()
         setContent {
